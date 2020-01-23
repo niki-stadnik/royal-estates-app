@@ -28,7 +28,7 @@
         <ion-label>
           <h6>Filter By Type:</h6>
         </ion-label>
-        <ion-toggle [(ngModel)]="useTypeFilter" (ionChange)="typeChanged(), "></ion-toggle>
+        <ion-toggle [(ngModel)]="useTypeFilter" (ionChange)="typeChanged()"></ion-toggle>
         <ion-select placeholder="Select One" [(ngModel)]="type" [(disabled)]="!useTypeFilter" (ionChange)="typeChanged()">
           <ion-option value="Apartment">Apartment</ion-option>
           <ion-option value="House">House</ion-option>

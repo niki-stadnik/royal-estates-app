@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { RoyalApiProvider } from '../../providers/royal-api/royal-api';
 import { UserSettingsProvider } from '../../providers/user-settings/user-settings';
 import { LocationsPage, EstateHomePage } from '../pages';
@@ -24,11 +24,13 @@ export class MyEstatesPage {
     public navParams: NavParams,
     public loadingController: LoadingController,
     public royalApi: RoyalApiProvider,
-    public userSettings: UserSettingsProvider) {
+    public userSettings: UserSettingsProvider,
+    public events: Events) {
   }
 
   ionViewDidLoad() {
     this.userSettings.getAllFavorites().then(favs => this.favorites = favs);
+    this.events.subscribe('favorites:changed', () => this.refreshFavorites());
   }
 
   goToLocations() {
@@ -47,12 +49,10 @@ export class MyEstatesPage {
         this.navCtrl.push(EstateHomePage, { estate: favorite.estate });
       });
   }
-  
-  refreshAll(refresher){
-    this.royalApi.refreshCurrentLocation().subscribe(() => {
-      refresher.complete();
-      this.ionViewDidLoad();
-    });
+
+  refreshFavorites() {
+    this.userSettings.getAllFavorites().then(favs => this.favorites = favs);
+    
   }
 
 }

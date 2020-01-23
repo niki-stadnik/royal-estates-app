@@ -11,9 +11,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="refreshAll($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   <ion-card *ngIf="favorites">
     <ion-card-header class="my-estates-header">Saved Estates</ion-card-header>
     <ion-list>

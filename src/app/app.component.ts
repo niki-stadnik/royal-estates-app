@@ -36,6 +36,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.userSettings.getAllFavorites().then(favs => this.favoriteEstates = favs);
       this.events.subscribe('favorites:changed', () => this.refreshFavorites());
     });
   }
