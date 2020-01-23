@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RoyalApiProvider } from '../../providers/royal-api/royal-api';
 import * as _ from 'lodash';
+import { EstateHomePage } from '../pages';
 
-/**
- * Generated class for the SimilarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -24,7 +19,12 @@ export class SimilarPage {
   games: any[];
   dateFilter: string;
   allGames: any[];
-  useDateFilter = false;
+  useTypeFilter = false;
+  type: any = {};
+  flag = false;
+  save: any[];
+  flagTF = false;
+  saveTF = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public royalApi: RoyalApiProvider) {
   }
@@ -38,13 +38,6 @@ export class SimilarPage {
     this.filterRegion();
   }
 
-  filterRegion() {
-    if (this.regionFilter === 'all') {
-      this.similar = this.allSimilar;
-    } else {
-      this.similar = _.filter(this.allSimilar, s => s.region === this.estate.region);
-    }
-  }
 
   getHeader(record, recordIndex, records) {
     if (recordIndex === 0 || record.region !== records[recordIndex - 1].region) {
@@ -54,12 +47,51 @@ export class SimilarPage {
   }
 
 
-  typeChanged() {
-    if (this.useDateFilter) {
-      // this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));
+
+  filterRegion() {
+    if (this.regionFilter === 'all') {
+      this.similar = this.allSimilar;
+      this.typeChanged();
     } else {
-      this.games = this.allGames;
+      this.similar = _.filter(this.allSimilar, s => s.region === this.estate.region);
+      this.typeChanged();
     }
+  }
+  typeChanged() {
+    if (this.useTypeFilter) {
+      console.log('drop menu', this.type);
+      this.similar = _.filter(this.similar, g => g.type === this.type);
+    } else {
+      this.similar = this.similar;
+    }
+    if(this.type === this.save && this.saveTF === this.useTypeFilter){
+      this.flag = false;
+    }
+    else{
+      this.flag = true;
+    }
+    this.save = this.type;
+    this.saveTF = this.useTypeFilter;
+    if(this.flag){
+      this.flag = false;
+      console.log('triger');
+      this.ionViewDidLoad();
+    }
+    
+  }
+
+
+
+  itemTapped($event, estate) {
+    this.navCtrl.push(EstateHomePage, { estate: estate });
+    console.log('sent', estate);
+  }
+
+  refreshAll(refresher) {
+    this.royalApi.refreshCurrentLocation().subscribe(() => {
+      refresher.complete();
+      this.ionViewDidLoad();
+    });
   }
 
 }

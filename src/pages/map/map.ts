@@ -9,7 +9,7 @@ import { RoyalApiProvider } from '../../providers/royal-api/royal-api';
  * Ionic pages and navigation.
  */
 
-//declare var window: any;
+declare var window: any;
 
 @IonicPage()
 @Component({
@@ -18,15 +18,15 @@ import { RoyalApiProvider } from '../../providers/royal-api/royal-api';
 })
 export class MapPage {
   map: any = {};
- // estate: any = {};
+  estate: any = {};
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public royalApi: RoyalApiProvider) {
-   //   this.estate = this.navParams.get('estate');
+      this.estate = this.navParams.get('estate');
   }
-/*
+
   ionViewDidLoad() {
  
     this.map = {
@@ -42,7 +42,7 @@ export class MapPage {
 
   getDirections() {
     window.location = `geo:${this.map.lat},${this.map.lng};u=35`;
-  }*/
+  }
 /*
   ionViewDidLoad() {
     let estate = this.navParams.data;

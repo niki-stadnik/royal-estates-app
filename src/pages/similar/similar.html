@@ -19,16 +19,27 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="refreshAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <ion-card-content>
       <ion-item>
         <ion-label>
-          Filter By Type:
+          <h6>Filter By Type:</h6>
         </ion-label>
+        <ion-toggle [(ngModel)]="useTypeFilter" (ionChange)="typeChanged(), "></ion-toggle>
+        <ion-select placeholder="Select One" [(ngModel)]="type" [(disabled)]="!useTypeFilter" (ionChange)="typeChanged()">
+          <ion-option value="Apartment">Apartment</ion-option>
+          <ion-option value="House">House</ion-option>
+          <ion-option value="Studio">Studio</ion-option>
+        </ion-select>
 
-
-        <ion-toggle [(ngModel)]="useDateFilter" (ionChange)="typeChanged()"></ion-toggle>
-        <!--   <ion-datetime displayFormat="M/D/YYYY" pickerFormat="M/D/YYYY" [(ngModel)]="dateFilter" [(disabled)]="!useDateFilter" (ionChange)="dateChanged()"></ion-datetime>
+        
+        <!--  
+          [(ngModel)]="context"
+          
+          <ion-datetime displayFormat="M/D/YYYY" pickerFormat="M/D/YYYY" [(ngModel)]="dateFilter" [(disabled)]="!useTypeFilter" (ionChange)="dateChanged()"></ion-datetime>
       -->
       </ion-item>
     </ion-card-content>

@@ -101,6 +101,13 @@ export class OverviewPage {
       this.userSettings.favoriteEstate(this.estate, this.location.location.id, this.location.location.name);
     }
   }
+  
+  refreshAll(refresher) {
+    this.royalApi.refreshCurrentLocation().subscribe(() => {
+      refresher.complete();
+      this.ionViewDidLoad();
+    });
+  }
 
 }
 

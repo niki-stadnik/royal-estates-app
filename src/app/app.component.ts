@@ -61,10 +61,13 @@ export class MyApp {
 
   goToEstate(favorite) {
     let loader = this.loadingController.create({
-      content: 'Getting data...',
-      dismissOnPageChange: true
+      content: 'Getting data...'
     });
     loader.present();
-    this.royalApi.getLocationData(favorite.locationId).subscribe(l => this.nav.push(EstateHomePage, favorite.estate));
+    this.royalApi.getLocationData(favorite.locationId)
+      .subscribe(e => {
+        loader.dismiss();
+        this.nav.push(EstateHomePage, { estate: favorite.estate });
+      });
   }
 }

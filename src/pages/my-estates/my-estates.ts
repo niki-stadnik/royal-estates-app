@@ -47,5 +47,12 @@ export class MyEstatesPage {
         this.navCtrl.push(EstateHomePage, { estate: favorite.estate });
       });
   }
+  
+  refreshAll(refresher){
+    this.royalApi.refreshCurrentLocation().subscribe(() => {
+      refresher.complete();
+      this.ionViewDidLoad();
+    });
+  }
 
 }

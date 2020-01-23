@@ -32,6 +32,7 @@ export class EstateHomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EstateHomePage', location);
+    console.log('ionViewDidLoad EstateHomePage', this.estate.refNumber);
   }
 
   goHome() {
