@@ -30,7 +30,6 @@ export class RoyalApiProvider {
         return Observable.of(this.currentLocation);
     }
 
-    // don't have data yet
     console.log('**about to make HTTP call');
     return this.http.get(`${this.baseUrl}/locations-data/${locationId}.json`)
         .map(response => {

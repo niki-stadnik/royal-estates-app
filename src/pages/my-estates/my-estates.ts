@@ -4,12 +4,6 @@ import { RoyalApiProvider } from '../../providers/royal-api/royal-api';
 import { UserSettingsProvider } from '../../providers/user-settings/user-settings';
 import { LocationsPage, EstateHomePage } from '../pages';
 
-/**
- * Generated class for the MyEstatesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({

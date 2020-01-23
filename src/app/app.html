@@ -8,7 +8,6 @@
   <ion-content>
     <ion-list>
         <ion-list-header>Navigate</ion-list-header>
-      <!--  <button menuClose ion-item  (click)="goHome()">Home</button>-->
         <button menuClose ion-item  (click)="goToLocations()">Find a Location</button>
     </ion-list>
     <ion-list>
@@ -21,5 +20,4 @@
 
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

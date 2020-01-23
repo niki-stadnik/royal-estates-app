@@ -2,12 +2,6 @@ import { Storage } from '@ionic/storage';
 import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 
-/*
-  Generated class for the UserSettingsProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UserSettingsProvider {
 
@@ -41,13 +35,3 @@ export class UserSettingsProvider {
     });
   }
 }
-
-
-/*
-favoriteEstate(estate, locationId, locationName) {
-    let item = { estate: estate, locationId: locationId, locationName: locationName };
-    this.storage.set(estate.id.toString(), JSON.stringify(item)).then(() => {
-      this.events.publish('favorites:changed');
-    });
-  }
-  */

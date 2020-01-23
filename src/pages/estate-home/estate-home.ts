@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OverviewPage, MapPage } from '../pages';
 import { SimilarPage } from '../similar/similar';
 
-/**
- * Generated class for the EstateHomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-estate-home',

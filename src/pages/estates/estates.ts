@@ -4,12 +4,6 @@ import { RoyalApiProvider } from '../../providers/royal-api/royal-api';
 import { EstateHomePage } from '../pages';
 import * as _ from 'lodash';
 
-/**
- * Generated class for the EstatesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
